@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.flippinggrid;
+
+/**
+ * <h1> Flipping Grid </h1>
+ * <p> The FlippingGrid program flips a default grid depending on the user input 
+ * vertically and/or horizontally </p>
+ * 
+ * @author Jeilene Mancenido
+ */
+
+import java.util.Scanner;
+
+public class FlippingGrid {
+
+    public static void main(String[] args) {
+
+        // grid 2D array
+        int[][] grid = {
+            {1,2},
+            {3,4}
+        };
+        // user input here
+        Scanner input = new Scanner(System.in);
+        String line = input.nextLine();
+        String[] letters = line.split("");
+
+        // this for loop is used to 
+        for (String letter:letters) {
+            if (letter.equals("V")) {
+                verticalFlip(grid);
+            }
+            if (letter.equals("H")) {
+                horizontalFlip(grid);
+            }
+        }
+
+        // this prints the final grid
+        printGrid(grid);
+
+        input.close();
+
+    }
+    // Horizontal Flip method
+    /**
+     * This method horizontally flips the default grid
+     * It gets called when the series of characters have an "H"
+     * @param grid this parameter is the default grid
+     */
+    public static void horizontalFlip(int[][] grid) {
+        int[] temp = grid[0];
+        grid[0] = grid[1];
+        grid[1] = temp;
+    }
+
+    // vertical flip method
+    /**
+     * This method vertically flips the default grid
+     * It gets called when the series of characters have a "V"
+     * @param grid 
+     */
+    public static void verticalFlip(int[][] grid) {
+        int temp = grid[0][0];
+        grid[0][0] = grid[0][1];
+        grid[0][1] = temp;
+
+        temp = grid[1][0];
+        grid[1][0] = grid[1][1];
+        grid[1][1] = temp;
+
+    }
+
+    // method for printing the grid
+    public static void printGrid(int[][] grid) {
+    for (int i = 0; i < 2; i++) {
+        System.out.println(grid[i][0] + " " + grid[i][1]);
+        }
+    }
+
+
+}
+
+
+
